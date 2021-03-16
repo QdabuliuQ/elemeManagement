@@ -103,7 +103,7 @@ export default {
   height: 450px;
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 49%;
   transform: translate(-50%, -50%);
 }
 .loginBoxTitle {

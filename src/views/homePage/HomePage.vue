@@ -4,7 +4,7 @@
       <el-aside width="200px">
         <el-col :span="24">
           <el-menu
-            default-active="1"
+            :default-active="$store.state.tabbarIndex"
             class="el-menu-vertical-demo"
             background-color="#242424"
             text-color="#fff"
@@ -25,9 +25,9 @@
               <el-menu-item-group>
                 <el-menu-item @click="usersPage" index="2-1">用户列表</el-menu-item>
                 <el-menu-item @click="shopsPage" index="2-2">商家列表</el-menu-item>
-                <el-menu-item index="2-3">食品列表</el-menu-item>
-                <el-menu-item index="2-3">订单列表</el-menu-item>
-                <el-menu-item index="2-3">管理员列表</el-menu-item>
+                <el-menu-item @click="foodsPage" index="2-3">食品列表</el-menu-item>
+                <el-menu-item index="2-4">订单列表</el-menu-item>
+                <el-menu-item index="2-5">管理员列表</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <!-- 添加数据 -->
@@ -70,7 +70,8 @@ export default {
   name: "HomePage",
   data () {
     return {
-      breads: []
+      breads: [],
+      activeIndex: '1'
     }
   },
   computed: {
@@ -86,14 +87,22 @@ export default {
   methods: {
     usersPage(){  // 用户列表
       this.$router.push('/usersPage')
+      this.$store.state.tabbarIndex = '2-1'
     },
 
     homePage(){  // 首页
       this.$router.push('/userDetial')
+      this.$store.state.tabbarIndex = '1'
     },
 
     shopsPage() {  // 商店页面
       this.$router.push('/shopsPage')
+      this.$store.state.tabbarIndex = '2-2'
+    },
+
+    foodsPage() {
+      this.$router.push('/foodsPage/' + null)
+      this.$store.state.tabbarIndex = '2-3'
     }
   },
   created () {
@@ -105,7 +114,6 @@ export default {
 </script>
 <style scoped>
 #HomePage {
-  width: 100vw;
   height: 100vh;
 }
 .el-container{

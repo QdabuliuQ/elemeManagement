@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    breadList: []
+    breadList: [],  // 面包屑数组
+    tabbarIndex : '1'
   },
   mutations: {
   },

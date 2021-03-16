@@ -6,11 +6,12 @@
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   min-width: 1200px;
+  overflow-x: hidden !important;
   height: 100vh;
   width: 100vw;
+}
+.el-dialog{
+  min-width: 550px;
 }
 </style>
