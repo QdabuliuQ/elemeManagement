@@ -137,7 +137,7 @@
 </template>
 
 <script>
-import { getFoodsList, getFoodsCount, setGoodsInfo } from "network/FoodsPage";
+import { getFoodsList, getFoodsCount, setGoodsInfo, deleteGooodsInfo } from "network/FoodsPage";
 
 export default {
   name: "FoodsPage",
@@ -149,7 +149,7 @@ export default {
         limit: 10,
         total: 0,
       },
-      outerVisible: true, // 外部的对话框
+      outerVisible: false, // 外部的对话框
       innerVisible: false, // 内部的对话框
       editForm: {}, // 编辑商品表单
       goodsData: [],  // 商品规格数组 
@@ -223,7 +223,27 @@ export default {
     },
 
     deleteGoods(info) {  // 删除商品
-      console.log(info);
+      this.$confirm('是否删除商品信息?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        deleteGooodsInfo(info.item_id).then(res => {  // 删除商品请求
+          if (res.status == 1) {
+            this.$notify({
+              title: '成功',
+              message: '删除商品信息成功',
+              type: 'success'
+            })
+          } else {
+            this.$notify({
+              title: '失败',
+              message: '删除商品信息失败',
+              type: 'error'
+            })
+          }
+        })
+      }).catch(() => {});
     },
 
     closeOuterDialog() {  // 关闭外面的对话框

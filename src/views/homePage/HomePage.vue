@@ -26,8 +26,8 @@
                 <el-menu-item @click="usersPage" index="2-1">用户列表</el-menu-item>
                 <el-menu-item @click="shopsPage" index="2-2">商家列表</el-menu-item>
                 <el-menu-item @click="foodsPage" index="2-3">食品列表</el-menu-item>
-                <el-menu-item index="2-4">订单列表</el-menu-item>
-                <el-menu-item index="2-5">管理员列表</el-menu-item>
+                <el-menu-item @click="ordersPage" index="2-4">订单列表</el-menu-item>
+                <el-menu-item @click="adminsPage" index="2-5">管理员列表</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <!-- 添加数据 -->
@@ -100,9 +100,19 @@ export default {
       this.$store.state.tabbarIndex = '2-2'
     },
 
-    foodsPage() {
+    foodsPage() {  // 商品页面
       this.$router.push('/foodsPage/' + null)
       this.$store.state.tabbarIndex = '2-3'
+    },
+
+    ordersPage() {  // 订单页面
+      this.$router.push('/ordersPage')
+      this.$store.state.tabbarIndex = '2-4'
+    },
+
+    adminsPage() {  // 管理员页面
+      this.$router.push('/adminsPage')
+      this.$store.state.tabbarIndex = '2-5'
     }
   },
   created () {

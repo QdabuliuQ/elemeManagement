@@ -46,3 +46,11 @@ export function setGoodsInfo(item_id, name, description, image_path, restaurant_
     method: 'post'
   })
 }
+
+// 删除食品
+export function deleteGooodsInfo(food_id) {
+  return request({
+    url: '/shopping/v2/food/' + food_id,
+    method: 'delete'
+  })
+}

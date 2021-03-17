@@ -26,3 +26,22 @@ export function getShopsCount() {
     url: 'shopping/restaurants/count'
   })
 }
+
+// 编辑店铺信息
+export function editShopData(id,name,address,description,phone,image_path,category) {
+  return request({
+    url: 'shopping/updateshop',
+    data: {
+      id,name,address,description,phone,image_path,category
+    },
+    method: 'post'
+  })
+}
+
+// 删除店铺信息
+export function deleteShopData(restaurant_id) {
+  return request({
+    url: 'shopping/restaurant/' + restaurant_id,
+    method: 'delete'
+  })
+}

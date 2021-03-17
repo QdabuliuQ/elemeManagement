@@ -8,6 +8,8 @@ const userDetail = () => import('views/userDetail/UserDetail') // 用户数据
 const usersPage = () => import('views/usersPage/UsersPage') // 用户列表
 const shopsPage = () => import('views/shopsPage/ShopsPage') // 商店列表
 const foodsPage = () => import('views/foodsPage/FoodsPage') // 食品列表
+const ordersPage = () => import('views/ordersPage/OrdersPage') // 订单列表
+const adminsPage = () => import('views/adminsPage/AdminsPage') // 订单列表
 
 // 解决重复点击路由保存的问题
 const originalPush = VueRouter.prototype.push
@@ -27,7 +29,9 @@ const routes = [
       { path: '/userDetial', component: userDetail },
       { path: '/usersPage', component: usersPage },
       { path: '/shopsPage', component: shopsPage },
-      { path: '/foodsPage/:restID', component: foodsPage }
+      { path: '/foodsPage/:restID', component: foodsPage },
+      { path: '/ordersPage', component: ordersPage },
+      { path: '/adminsPage', component: adminsPage }
     ]
   }
 ]
