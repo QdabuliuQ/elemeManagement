@@ -37,8 +37,8 @@
                 <span>添加数据</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="3-1">添加商铺</el-menu-item>
-                <el-menu-item index="3-2">添加商品</el-menu-item>
+                <el-menu-item @click="addShopPage" index="3-1">添加商铺</el-menu-item>
+                <el-menu-item @click="addFoodPage" index="3-2">添加商品</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="4">
@@ -47,7 +47,7 @@
                 <span>图表</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="4-1">用户分布</el-menu-item>
+                <el-menu-item @click="chartsDetail" index="4-1">用户分布</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
           </el-menu>
@@ -101,7 +101,7 @@ export default {
     },
 
     foodsPage() {  // 商品页面
-      this.$router.push('/foodsPage/' + null)
+      this.$router.push('/foodsPage/')
       this.$store.state.tabbarIndex = '2-3'
     },
 
@@ -113,6 +113,21 @@ export default {
     adminsPage() {  // 管理员页面
       this.$router.push('/adminsPage')
       this.$store.state.tabbarIndex = '2-5'
+    },
+
+    addShopPage() {  // 添加店铺页面
+      this.$router.push('/addShopPage')
+      this.$store.state.tabbarIndex = '3-1'
+    },
+
+    addFoodPage() {  // 添加食品页面
+      this.$router.push('/addFoodPage/' + null)
+      this.$store.state.tabbarIndex = '3-2'
+    },
+
+    chartsDetail() {  // 用户图表
+      this.$router.push('/chartsDetail')
+      this.$store.state.tabbarIndex = '4-1'
     }
   },
   created () {

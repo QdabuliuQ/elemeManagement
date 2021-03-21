@@ -69,6 +69,12 @@ export default {
                 message: '登录成功',
                 type: 'success'
               });
+            } else {
+              this.$notify({
+                title: '失败',
+                message: '账号或者密码错误',
+                type: 'error'
+              });
             }
           })
         } else {

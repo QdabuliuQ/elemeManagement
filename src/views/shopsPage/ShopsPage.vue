@@ -41,6 +41,7 @@
               >编辑</el-button
             >
             <el-button
+              @click="addShopDetail(scope.row)"
               size="mini"
               icon="el-icon-circle-plus-outline"
               type="success"
@@ -147,13 +148,15 @@ export default {
           { required: true, message: '联系电话不能为空', trigger: 'blur' },
         ]
       },  // 表单验证规则
-      imgUrl: ''
+      imgUrl: '',
+      isSuccess: true,
     };
   },
   methods: {
     location() {
       // 获取定位
       getLocation().then((res) => {
+        console.log(res);
         if (res != undefined) {
           if (res.status == 200) {
             this.cityDetail.id = res.data.id;
@@ -167,6 +170,8 @@ export default {
               this.shopsSetting.limit
             );
           }
+        } else {
+          this.isSuccess = false
         }
       });
     },
@@ -190,24 +195,28 @@ export default {
       });
     },
     handleSizeChange(limit) {
-      // 切换条数
-      this.shopsSetting.limit = limit;
-      this.shopsDetail(
-        this.cityDetail.latitude,
-        this.cityDetail.longitude,
-        this.shopsSetting.offset,
-        this.shopsSetting.limit
-      );
+      if (this.isSuccess) {
+        // 切换条数
+        this.shopsSetting.limit = limit;
+        this.shopsDetail(
+          this.cityDetail.latitude,
+          this.cityDetail.longitude,
+          this.shopsSetting.offset,
+          this.shopsSetting.limit
+        );
+      } 
     },
     handleCurrentChange(offset) {
-      // 切换页数
-      this.shopsSetting.offset = offset;
-      this.shopsDetail(
-        this.cityDetail.latitude,
-        this.cityDetail.longitude,
-        this.shopsSetting.offset,
-        this.shopsSetting.limit
-      );
+      if (this.isSuccess) {
+        // 切换页数
+        this.shopsSetting.offset = offset;
+        this.shopsDetail(
+          this.cityDetail.latitude,
+          this.cityDetail.longitude,
+          this.shopsSetting.offset,
+          this.shopsSetting.limit
+        );
+      }
     },
 
     editShopDetail(info) {  // 编辑店铺信息
@@ -290,6 +299,10 @@ export default {
 
     closeDialog() {  // 关闭对话框回调
       this.$refs.shopEditForm.resetFields()  // 清空数据
+    },
+
+    addShopDetail(info) {  // 添加信息
+      this.$router.push('/addFoodPage/' + info.id)
     }
   },
   created() {
@@ -298,6 +311,7 @@ export default {
       this.shopsSetting.total = res.data.count;
     });
     this.$store.state.breadList = ["数据管理", "商家列表"];
+    this.$store.state.tabbarIndex = '2-2'
     this.location(); // 获取定位
   },
 };

@@ -18,7 +18,6 @@ export function request(config){
       message: '网络或者服务器出了点问题',
       type: 'error'
     });
-    // return Promise.resolve(err);
   })
 
   instance.interceptors.response.use(config => {
@@ -30,7 +29,6 @@ export function request(config){
       message: '网络或者服务器出了点问题',
       type: 'error'
     });
-    // return Promise.resolve(err);
   })
 
   // 返回 实例对象

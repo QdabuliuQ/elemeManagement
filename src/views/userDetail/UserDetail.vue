@@ -210,7 +210,8 @@ export default {
   created() {
     this.getEchartData()  // 获取图表数据
 
-    this.$store.state.breadList = ['首页','数据统计']
+    this.$store.state.breadList = ["首页", "数据统计"];
+    this.$store.state.tabbarIndex = "1";
 
     let d = new Date(); // 获取日期发起请求
     let month = (d.getMonth() + 1 + "").padStart(2, "0");
