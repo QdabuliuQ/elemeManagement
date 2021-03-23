@@ -19,3 +19,12 @@ export function getCategoryList(restaurant_id) {
     url: 'shopping/getcategory/' + restaurant_id,
   })
 }
+
+// 添加商品
+export function addFoodInfo(data) {
+  return request({
+    url: 'shopping/addfood',
+    method: 'post',
+    data,
+  })
+}
